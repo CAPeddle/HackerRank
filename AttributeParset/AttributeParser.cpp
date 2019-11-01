@@ -3,14 +3,34 @@
 
 #include "pch.h"
 #include <iostream>
+#include <utility>
 #include <vector>
 #include <string>
 
-std::vector<std::string> GetHRML(int q)
+class Attribute
+{
+	
+public:
+	Attribute()
+	= default;
+
+	~Attribute() {  }
+	
+	void SetName(std::string p_name) { m_name = std::move(p_name); }
+	std::string Name() const { return m_name; }
+	
+private:
+	std::string m_name;
+	std::vector< std::pair<std::string, std::string > > m_attributes;
+
+	std::vector< std::unique_ptr<Attribute> > m_subTags;
+};
+
+std::vector<std::string> GetLines(int q)
 {
 	std::vector<std::string> _hrml;
 	std::string str;
-	
+
 	while (q--)
 	{
 		getline(std::cin, str);
@@ -20,12 +40,12 @@ std::vector<std::string> GetHRML(int q)
 	return _hrml;
 }
 
-
 std::pair<int, int> GetQuery()
 {
 	int n, q;
 
 	std::cin >> n >> q;
+	std::cin.ignore(1000, '\n');
 
 	return std::make_pair(n, q);
 }
@@ -36,15 +56,24 @@ int main()
 
 		auto nAndq = GetQuery();
 
-		std::cout << "Enter HRML\n";
-		auto hrml = GetHRML(nAndq.second);
+		std::cout << "Enter HRML " << nAndq.first << "\n";
+		auto hrml = GetLines(nAndq.first);
 
+		std::cout << "Enter Queries " << nAndq.second << "\n";
+		auto queries = GetLines(nAndq.second);
+	
     std::cout << "nAndq " << nAndq.first << ":" << nAndq.second << std::endl;
     for (auto const & oneLine : hrml)
     {
-			std::cout << oneLine;
+			std::cout << oneLine << "\n";
     }
 
+		std::cout << "Queries " << std::endl;
+		for (auto const& oneLine : queries)
+		{
+			std::cout << oneLine << "\n";
+		}
+	
     std::cout << "\nhit a key" << std::endl;
     std::cin.get();
 }
