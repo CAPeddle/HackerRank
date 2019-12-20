@@ -9,8 +9,8 @@
 #include <sstream>
 #include <vector>
 
-/*
-auto sum_by_three = [](uint8_t a, uint8_t b) {
+
+auto sum_by_three_algo = [](uint8_t a, uint8_t b) {
 	static bool applyThree = false;
 
 	if (applyThree)
@@ -25,30 +25,39 @@ auto sum_by_three = [](uint8_t a, uint8_t b) {
 	
 	return a + b;
 };
-*/
+
+
 uint8_t sum_by_three(std::vector<uint8_t> &isbn)
 {
 	if (isbn.empty()) return 0;
 	
-	if (isbn.size() % 2 == 0) 
-		
-		return sum_by_three
-	return  0;
+	if (isbn.size() % 2 != 0)
+	{
+		auto current_last = isbn.back();
+		isbn.pop_back();
+		return current_last + sum_by_three(isbn);
+	}
+	else
+	{
+		auto current_last = isbn.back();
+		isbn.pop_back();
+		return current_last * 3 + sum_by_three(isbn);
+	}
 }
 
 std::vector<uint8_t> GetISBN(const std::string digits)
 {
-	std::vector<uint8_t> isbn;
-	isbn.reserve(digits.length());
+	std::vector<uint8_t> isbn (digits.length(), 0);
+		
+	if (digits.length() != 12) return isbn;
 	
-	auto it = isbn.begin();
 	char digit;
 	for (size_t i = 0; i < 12; ++i) {
 		digit = digits[i];
 		if (isdigit(digits[i]))
 		{
 			const auto temp = static_cast<uint8_t>(std::strtoul(&digit, nullptr, 10));
-			isbn.insert(it++,temp);
+			isbn[i] = temp;
 		}
 		else
 		{
@@ -61,7 +70,6 @@ std::vector<uint8_t> GetISBN(const std::string digits)
 
 int main()
 {
-	std::array<uint8_t, 13> isbn = { 0 };
   std::cout << "Enter 12 digits\n";
 
 #ifdef TEST	
@@ -72,19 +80,21 @@ int main()
 
 	for (size_t i = 0; i < 3; i++)
 	{
-		isbn = GetISBN(digits);
+		auto isbn = GetISBN(digits);
+				
+		int accu_sum = std::accumulate(isbn.begin(), isbn.end(), 0);
 
-		int sum = std::accumulate(isbn.begin(), isbn.end(), 0);
+		int sum = sum_by_three(isbn);
 		
 		auto s = std::accumulate(isbn.begin(), isbn.end(),
 			0, // start with first element
-			sum_by_three);
+			sum_by_three_algo);
 			
 		std::cout << '\n';
 		for (const auto& s : isbn)
 			std::cout << std::to_string(s) << ' ';
 
-		std::cout << '\n' << s << '\n' << sum;
+		std::cout << '\n' << s << '\n' << accu_sum << '\n' << sum;
 	}
 	
 }
