@@ -21,5 +21,12 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Prob Description.txt" />
+    <Text Include="InValidISBN.txt" />
+    <Text Include="ValidISBN.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="isbn13.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

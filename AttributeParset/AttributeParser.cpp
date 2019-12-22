@@ -110,7 +110,7 @@ Attribute processHRML(std::vector<std::string> hrml)
 						auto _hrmlTempChild = new Attribute();
 						_hrmlTempChild->AddParent(std::move(_hrmlChild));
 						_hrmlChild->AddTag(_hrmlTempChild);
-						_hrmlChild = _hrmlTempChild;
+						//_hrmlChild = _hrmlTempChild;
 					}
 				}
 			}
