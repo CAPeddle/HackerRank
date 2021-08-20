@@ -15,7 +15,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ISBN13", "ISBN13\ISBN13.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NativeTest", "NativeTest\NativeTest.vcxproj", "{346859FA-1E1B-41BF-AFC1-1B45A434D809}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JumpingOnClouds", "JumpingOnClouds\JumpingOnClouds.vcxproj", "{A34287BD-7C63-46F6-B4A1-BC64F222C19A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JumpingOnCloudsv2", "JumpingOnCloudsv2\JumpingOnClouds.vcxproj", "{A34287BD-7C63-46F6-B4A1-BC64F222C19A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
