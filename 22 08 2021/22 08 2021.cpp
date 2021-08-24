@@ -1,6 +1,9 @@
 // 22 08 2021.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
+#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
+#include "..\catch.hpp"
+
 #include <iostream>
 #include <vector>
 #include <unordered_map>
@@ -78,24 +81,25 @@ std::string longestCommonPrefix(std::vector<std::string>& strs) {
     return longestCommonPrefix;
 }
 
-int main()
-{
+
+TEST_CASE("Longest Prefix", "LeetCode") {
+
     {
         std::vector<std::string> strs = { "flower", "flow", "flight" };
-        printContainer(strs, false);
-        std::cout << " : " << longestCommonPrefix(strs) << std::endl;
-
+        REQUIRE(longestCommonPrefix(strs) == "fl");
     }
+
     {
         std::vector<std::string> strs = { "dog", "racecar", "car" };
-        printContainer(strs, false);
-        std::cout << " : " << longestCommonPrefix(strs) << std::endl;
+        REQUIRE(longestCommonPrefix(strs) == "");
     }
     {
         std::vector<std::string> strs = { "cir", "car" };
-        printContainer(strs, false);
-        std::cout << " : " << longestCommonPrefix(strs) << std::endl;
+        REQUIRE(longestCommonPrefix(strs) == "c");
     } 
+#ifdef LongestPrefix
+
+#endif
 
 #ifdef flatlandspace
     {

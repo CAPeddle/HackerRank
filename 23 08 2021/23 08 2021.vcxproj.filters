@@ -15,16 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="22 08 2021.cpp">
+    <ClCompile Include="23 08 2021.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Projects.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\catch.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <Text Include="Links.txt" />
+    <Text Include="Think.txt" />
   </ItemGroup>
 </Project>

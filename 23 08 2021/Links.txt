@@ -1,0 +1,4 @@
+https://towardsdatascience.com/backtracking-how-to-approach-search-programming-interview-questions-647a742197
+https://leetcode.com/problems/n-queens/
+
+https://leetcode.com/problems/count-numbers-with-unique-digits/discuss/1416500/Python-3-or-Math-DP-or-Explanation
